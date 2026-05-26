@@ -31,4 +31,4 @@ Marketing decisions often respond to expected performance, creating feedback loo
 ---
 
 ## Tools
-Python, SQL, Regression Modeling, Adstock and Saturation Transformations
+Python, Regression Modeling, Adstock and Saturation Transformations
