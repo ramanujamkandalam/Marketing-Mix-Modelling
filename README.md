@@ -101,7 +101,7 @@ Results are therefore interpreted as directional insights for budget planning ra
 
 ## Repository Contents
 
-* MMM_Casestudy.ipynb — Complete modeling workflow
+* MMM_Casestudy.ipynb — Complete modeling workflow includes
 * Data Preparation & Feature Engineering
 * Adstock and Saturation Analysis
 * Model Comparison & Diagnostics
