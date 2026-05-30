@@ -1,34 +1,117 @@
 # Marketing Mix Modeling & Budget Optimization
 
-## Objective
-I built this project to understand how different marketing channels impact performance and how budget allocation decisions can be improved using data.
+## Project Overview
+
+This project explores how marketing investments across multiple media channels influence television viewership and how budget allocation decisions can be optimized using Marketing Mix Modeling (MMM).
+
+The objective was to quantify the relationship between media spend and audience performance, simulate alternative allocation strategies, and identify opportunities to improve return on marketing investment while maintaining realistic advertising response behavior.
 
 ---
 
-## Approach
-I started with a regression-based model to quantify the relationship between marketing spend and outcomes.  
-To better reflect real-world behavior, I incorporated adstock to capture lagged effects and saturation to account for diminishing returns.  
-I then extended the analysis by running scenario simulations to evaluate how changes in budget allocation could influence performance.
+## Business Problem
+
+Marketing teams must decide how to allocate limited budgets across channels such as Network TV, Cable TV, and Digital Media. However, advertising effects are rarely immediate or linear.
+
+This project investigates:
+
+* Which channels are most strongly associated with viewership performance
+* How advertising carryover impacts future audience reach
+* Where diminishing returns begin to occur
+* How alternative budget allocation strategies affect projected performance
 
 ---
 
-## Key Insights  
-I observed diminishing returns at higher levels of spend, indicating that increasing budget does not always lead to proportional gains.  
-More importantly, I realized that performance is influenced not just by spend, but also by contextual factors such as timing and lifecycle effects.
+## Methodology
+
+### Data Preparation
+
+* Data cleaning and feature engineering
+* Time-based validation strategy
+* Episode lifecycle and contextual variable creation
+
+### Marketing Mix Modeling
+
+A regression-based MMM framework was developed using:
+
+* Linear Regression
+* Adstock Transformations (carryover effects)
+* Saturation Transformations (diminishing returns)
+* Multicollinearity Diagnostics (VIF)
+* Out-of-Sample Evaluation (R², RMSE, MAE)
+
+### Budget Optimization Framework
+
+The optimization workflow included:
+
+1. Establish baseline historical spend allocation
+2. Recompute adstock effects
+3. Apply saturation transformations
+4. Generate new viewership forecasts
+5. Estimate revenue impact
+6. Compare scenarios against baseline performance
 
 ---
 
-## Business Impact
-Through simulation, I estimated that increasing digital spend by 20% could drive approximately a 3% lift in performance, translating to around 50K incremental users.  
-This highlights how relatively small allocation changes can lead to meaningful outcomes when guided by data.
+## Key Findings
+
+* Advertising carryover effects significantly improved model realism compared to raw spend models.
+* Saturation transformations captured diminishing returns at higher investment levels.
+* Traditional television channels demonstrated the strongest modeled association with viewership.
+* Digital media contributed positively but showed faster saturation behavior.
+* Budget reallocation scenarios suggested that relatively small shifts in media allocation could generate measurable performance improvements.
+
+---
+
+## Results
+
+* Best Model Train R²: 0.64
+* Best Model Test R²: 0.46
+* Evaluated multiple adstock and saturation specifications
+* Conducted scenario-based budget optimization simulations
+* Estimated revenue and audience lift under alternative spending strategies
+
+---
+
+## Important Modeling Considerations
+
+This project uses observational marketing data and should be interpreted as a decision-support framework rather than a strictly causal model.
+
+Key limitations include:
+
+* Potential endogeneity in media allocation decisions
+* Omitted variables not represented in the dataset
+* Regression-based attribution assumptions
+* Simplified simulation environment
+
+Results are therefore interpreted as directional insights for budget planning rather than definitive causal estimates.
+
+---
+
+## Technologies Used
+
+* Python
+* Pandas
+* NumPy
+* Statsmodels
+* Scikit-Learn
+* Matplotlib
+* Seaborn
+
+---
+
+## Repository Contents
+
+* MMM_Casestudy.ipynb — Complete modeling workflow
+* Data Preparation & Feature Engineering
+* Adstock and Saturation Analysis
+* Model Comparison & Diagnostics
+* Budget Reallocation Simulations
+* Scenario-Based Revenue Optimization
 
 ---
 
 ## Key Learning
-While building this, I realized that model outputs need to be interpreted carefully. 
-Marketing decisions often respond to expected performance, creating feedback loops, which means causality is not always straightforward.
 
----
+One of the most valuable lessons from this project was understanding the difference between predictive performance and causal interpretation.
 
-## Tools
-Python, Regression Modeling, Adstock and Saturation Transformations
+While adstock and saturation transformations improved model realism and predictive accuracy, they do not fully resolve the underlying challenge that marketing spend is often allocated based on expected demand. This reinforced the importance of interpreting Marketing Mix Models as strategic decision-support tools rather than direct measures of causal impact.
