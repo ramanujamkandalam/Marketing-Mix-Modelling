@@ -1,5 +1,11 @@
 # Marketing Mix Modeling & Budget Optimization
 
+GitHub notebook preview may occasionally fail.
+
+View the fully rendered notebook here:
+
+https://nbviewer.org/github/ramanujamkandalam/Marketing-Mix-Modelling/blob/main/MMM_Casestudy%20%288%29.ipynb
+
 ## Project Overview
 
 This project explores how marketing investments across multiple media channels influence television viewership and how budget allocation decisions can be optimized using Marketing Mix Modeling (MMM).
