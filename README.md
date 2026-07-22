@@ -134,16 +134,33 @@ The improved validation trained on complete earlier seasons and tested on the la
 
 ## Convergence Checks
 
+Model 1 and Model 2 used different sampler settings, so their diagnostics are reported separately (numbers pulled directly from each model's `az.summary()` output).
+
+### Model 1 — Weeks 1–12 train / Weeks 13–15 test (late-season stress test)
+
+| Check | Result | Interpretation |
+|---|---:|---|
+| Chains | 4 | Independent chains were used to assess mixing |
+| Posterior draws | 4,000 | 1,000 draws per chain |
+| Tuning steps | 2,000 | Warmup for stable NUTS sampling |
+| Target acceptance | 0.98 | Conservative setting for a hierarchical nonlinear model |
+| Maximum R-hat | 1.006 | Chains converged well |
+| Minimum bulk ESS | 733 | Central posterior estimates were stable |
+| Minimum tail ESS | 886 | Uncertainty intervals had strong support |
+| Divergences | 1 of 4,000 draws | Negligible; no meaningful sampler geometry failure |
+
+### Model 2 — earlier complete seasons train / latest season test (final validation design)
+
 | Check | Result | Interpretation |
 |---|---:|---|
 | Chains | 4 | Independent chains were used to assess mixing |
 | Posterior draws | 4,000 | 1,000 draws per chain |
 | Tuning steps | 2,500 | Long warmup for stable NUTS sampling |
 | Target acceptance | 0.99 | Conservative setting for a hierarchical nonlinear model |
-| Maximum R-hat | ~1.005 | Chains converged well |
-| Minimum bulk ESS | ~612 | Central posterior estimates were stable |
-| Minimum tail ESS | ~423 | Uncertainty intervals had acceptable support |
-| Divergences | 0 | No major sampler geometry failures |
+| Maximum R-hat | 1.004 | Chains converged well |
+| Minimum bulk ESS | 739 | Central posterior estimates were stable |
+| Minimum tail ESS | 612 | Uncertainty intervals had acceptable support |
+| Divergences | 0 | No sampler geometry failures |
 
 ## Key Results
 
@@ -239,6 +256,6 @@ Marginal ROAS Simulation
 
 After fitting the hierarchical Bayesian MMM, I ran a posterior forward-pass simulation to estimate marginal ROAS. For each channel, I increased spend by 1%, rebuilt the lag/adstock and saturation features, and compared posterior revenue contribution against the baseline.
 
-The simulation showed the strongest marginal return for Network TV, followed by Cable TV, while Digital had a positive but less certain return. Network TV had a median mROAS of 2.44, Cable TV 1.90, and Digital 1.16. Digital’s lower credible bound fell below 1, suggesting it should be scaled more cautiously.
+The simulation showed the strongest marginal return for Network TV, followed by Cable TV, while Digital had a positive but less certain return. Network TV had a median mROAS of 2.44, Cable TV 1.90, and Digital 1.16. Digital's lower credible bound fell below 1, suggesting it should be scaled more cautiously.
 
 Final recommendation: prioritize small incremental budget increases toward Network TV and Cable TV, while using Digital selectively by show and validating larger changes through controlled experiments or additional scenario testing.
