@@ -234,3 +234,11 @@ The project followed a practical Bayesian mindset:
 3. Find where the setup fails.
 4. Update the validation design.
 5. Communicate uncertainty honestly.
+
+Marginal ROAS Simulation
+
+After fitting the hierarchical Bayesian MMM, I ran a posterior forward-pass simulation to estimate marginal ROAS. For each channel, I increased spend by 1%, rebuilt the lag/adstock and saturation features, and compared posterior revenue contribution against the baseline.
+
+The simulation showed the strongest marginal return for Network TV, followed by Cable TV, while Digital had a positive but less certain return. Network TV had a median mROAS of 2.44, Cable TV 1.90, and Digital 1.16. Digital’s lower credible bound fell below 1, suggesting it should be scaled more cautiously.
+
+Final recommendation: prioritize small incremental budget increases toward Network TV and Cable TV, while using Digital selectively by show and validating larger changes through controlled experiments or additional scenario testing.
